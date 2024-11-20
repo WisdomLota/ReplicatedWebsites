@@ -11,7 +11,42 @@ import "../styles/fba.css";
 
 const FBA_Finance = () => {
 
+    const [showUpArrow, setShowUpArrow] = useState(false);
+    const [showDownArrow, setShowDownArrow] = useState(true);
+
     const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+          const scrollPosition = window.scrollY;
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.body.scrollHeight;
+
+          if (scrollPosition === 0) {
+            setShowUpArrow(false);
+            setShowDownArrow(true);
+          } else if (scrollPosition > (documentHeight - windowHeight)) {
+            setShowUpArrow(true);
+            setShowDownArrow(false);
+          } else {
+            setShowUpArrow(true);
+            setShowDownArrow(true);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+    
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const scrollToBottom = () => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    };
 
     useEffect(() => {
       const handleScroll = () => {
@@ -118,6 +153,20 @@ const FBA_Finance = () => {
             </section>
 
         </main>
+
+        {/* Scroll arrows */}
+        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-4 z-50">
+            {showUpArrow && (
+              <button onClick={scrollToTop} className="animate-bounce bg-blue-500 text-white p-2 rounded-full">
+                ▲
+              </button>
+            )}
+            {showDownArrow && (
+              <button onClick={scrollToBottom} className="animate-bounce bg-blue-500 text-white p-2 rounded-full">
+                ▼
+              </button>
+            )}
+      </div>
     </body>
   )
 }
