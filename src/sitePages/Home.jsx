@@ -11,8 +11,9 @@ const Home = () => {
             <p className="text-1xl">Please click on any below to view</p>
         </header>
 
-        <main>
-            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold" onClick={()=> navigate('/hondaCyprus')}>Honda Cyprus</p>
+        <main className="flex space-x-4">
+            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold hover:bg-blue-700" onClick={()=> navigate('/FBA_Finance')}>FBA Finance</p>
+            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold hover:bg-blue-700" onClick={()=> navigate('/hondaCyprus')}>Honda Cyprus</p>
         </main>
     </body>
     

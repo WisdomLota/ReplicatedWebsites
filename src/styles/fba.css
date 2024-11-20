@@ -1,0 +1,6 @@
+.custom-rounded-corners {
+  border-top-left-radius: 2rem; /* Adjust as needed */
+  border-bottom-right-radius: 2rem; /* Adjust as needed */
+  border-top-right-radius: 0; /* Ensure other corners are straight */
+  border-bottom-left-radius: 0; /* Ensure other corners are straight */
+}
