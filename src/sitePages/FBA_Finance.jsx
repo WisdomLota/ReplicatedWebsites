@@ -73,7 +73,7 @@ const FBA_Finance = () => {
                 </div>
             </section>
 
-            <section className="mt-28">
+            <section className="mt-28 mb-12">
                 <div className="flex flex-col items-center justify-center mx-auto space-x-4">
 
                     <div className="bg-FBA-pink-200 border-dashed text-center w-6/12 px-6 py-4 border-white border-4 space-y-2 custom-rounded-corners z-30">
@@ -115,12 +115,6 @@ const FBA_Finance = () => {
                     </div>
 
                 </div>   
-            </section>
-
-            <section>
-                <div className="bg-green-400 mt-12">
-                    to be continued...
-                </div>
             </section>
 
         </main>
