@@ -7,7 +7,10 @@ import communityShield from "../assets/FBA_FinanceAssets/asset 3.svg";
 import solutions from "../assets/FBA_FinanceAssets/asset 4.svg";
 import rocket from "../assets/FBA_FinanceAssets/asset 5.svg";
 import streamlineImg from "../assets/FBA_FinanceAssets/streamlineImg.svg";
-import personImg from "../assets/FBA_FinanceAssets/wisdom.jpeg";
+import personImg1 from "../assets/FBA_FinanceAssets/wisdom.jpeg";
+import personImg2 from "../assets/FBA_FinanceAssets/tina.jpg";
+import personImg3 from "../assets/FBA_FinanceAssets/lotaPortrait.jpg";
+import personImg4 from "../assets/FBA_FinanceAssets/amikusPic.jpg";
 import wavyWaters from "../assets/FBA_FinanceAssets/wavyWaters.png";
 import frontPointer from "../assets/FBA_FinanceAssets/frontPointer.svg";
 import backPointer from "../assets/FBA_FinanceAssets/backPointer.svg";
@@ -16,27 +19,27 @@ import "../styles/fba.css";
 const slides = [
   {
     heading: 'I see an opportunity where the international suppliers market would leverage these system to provide supplies with profitable businesses and because they have a healthy and trustworthy and easy to access creditworthiness, these suppliers can provide these good and service upfront and receive payment afterwards.',
-    image: personImg,
+    image: personImg1,
+    name: 'Wisdom Agunta',
+    title: 'Co-founder & CEO, FBA Finance'
+  },
+  {
+    heading: 'Achieving an ecosystem of businesses with solid credit building and running in an ecosystem that makes sure it stays that way is one of the best ways to build for the future in my opinion.',
+    image: personImg2,
     name: 'Ochi Ojie',
     title: 'Co-founder & CTO, FBA Finance'
   },
   {
-    heading: 'Slide 2',
-    image: 'https://via.placeholder.com/150',
-    name: 'Name 2',
-    title: 'Co-founder & CTO, FBA Finance'
+    heading: 'Local empowerment. Game changer for financial inclusion.',
+    image: personImg3,
+    name: 'Ram Hadji',
+    title: 'Co-founder & CEO, Kemet Works'
   },
   {
-    heading: 'Slide 3',
-    image: 'https://via.placeholder.com/150',
-    name: 'Name 3',
-    title: 'Co-founder & CTO, FBA Finance'
-  },
-  {
-    heading: 'Slide 4',
-    image: 'https://via.placeholder.com/150',
-    name: 'Name 4',
-    title: 'Co-founder & CTO, FBA Finance'
+    heading: 'FBA looks cool 🔥',
+    image: personImg4,
+    name: 'Emmanuel Everest',
+    title: 'Co-founder & CTO, Link'
   },
 ];
 
@@ -208,19 +211,19 @@ const FBA_Finance = () => {
           </div>
         </section>
 
-        <section style={{backgroundImage: `url(${streamlineImg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }} 
-          className="relative w-3/4 mx-auto rounded-2xl p-4 mb-12 text-white shadow-2xl">
+        <section style={{backgroundImage: `url(${wavyWaters})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }} 
+          className="relative w-3/4 mx-auto rounded-3xl p-4 mb-12 text-white shadow-2xl">
           <div className="overflow-hidden h-72 relative">
-            <div className="absolute w-full h-full transition-transform duration-500 ease-in-out"
+            <div className="absolute w-full h-full transition-transform duration-1000 ease-in-out"
                 style={{ transform: `translateY(-${currentIndex * 100}%)`}}>
               {slides.map((slide, index) => (
-                <div key={index} className="w-full h-72 flex flex-col">
-                  <p className="p-4 font-medium text-center"><em>{slide.heading}</em></p>
+                <div key={index} className="w-full h-72 flex flex-col animate-slide-up">
+                  <p className="p-4 font-medium text-center animate-fade-up"><em>{slide.heading}</em></p>
                   <div className="p-4 flex space-x-2 mt-12">
-                    <img src={slide.image} alt="person-image" className="w-20 h-20 rounded-full mb-4"/>
+                    <img src={slide.image} alt="person-image" className="w-20 h-20 rounded-full mb-4 animate-fade-up"/>
                     <div className="p-4">
-                      <h3 className="text-lg font-semibold">{slide.name}</h3>
-                      <p className="text-sm font-thin">{slide.title}</p>
+                      <h3 className="text-lg font-semibold animate-fade-up">{slide.name}</h3>
+                      <p className="text-sm font-thin animate-fade-up">{slide.title}</p>
                     </div>
                   </div>
                 </div>
