@@ -1,71 +1,88 @@
 import React, { useState, useEffect } from 'react';
 
-const ScrollArrows = () => {
-  const [showUpArrow, setShowUpArrow] = useState(false);
-  const [showDownArrow, setShowDownArrow] = useState(true);
+const slides = [
+  {
+    heading: 'Slide 1',
+    image: 'https://via.placeholder.com/150',
+    name: 'Name 1'
+  },
+  {
+    heading: 'Slide 2',
+    image: 'https://via.placeholder.com/150',
+    name: 'Name 2'
+  },
+  {
+    heading: 'Slide 3',
+    image: 'https://via.placeholder.com/150',
+    name: 'Name 3'
+  },
+  {
+    heading: 'Slide 4',
+    image: 'https://via.placeholder.com/150',
+    name: 'Name 4'
+  },
+];
+
+const Slider = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.body.scrollHeight;
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 15000);
 
-      console.log(windowHeight);
-      console.log(scrollPosition);
-      console.log(documentHeight);
-      // Determine when to show arrows
-      if (scrollPosition === 0) {
-        setShowUpArrow(false);
-        setShowDownArrow(true);
-      } else if (scrollPosition > (windowHeight/1.5)) {
-        setShowUpArrow(true);
-        setShowDownArrow(false);
-      } else {
-        setShowUpArrow(true);
-        setShowDownArrow(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => clearInterval(interval);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+  };
+
+  const handleIndicatorClick = (index) => {
+    setCurrentIndex(index);
   };
 
   return (
-    <div className="relative min-h-screen bg-gray-100">
-      {/* Content to scroll */}
-      <div className="py-20">
-        <h1 className="text-4xl text-center mb-20">Scroll Down</h1>
-        <p className="text-center mb-96">Keep scrolling to see the effect...</p>
-        <h2 className="text-3xl text-center mt-96 mb-20">You're in the middle!</h2>
-        <p className="text-center mb-96">Scroll some more...</p>
-        <h1 className="text-4xl text-center mt-96">End of the Page</h1>
+    <div className="relative w-full max-w-lg mx-auto p-4">
+      <div className="overflow-hidden rounded-lg shadow-lg h-64 relative">
+        <div
+          className="absolute w-full h-full transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateY(-${currentIndex * 100}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <div key={index} className="w-full h-64 flex flex-col items-center justify-center p-4 bg-white">
+              <h2 className="text-2xl font-bold mb-2">{slide.heading}</h2>
+              <img src={slide.image} alt={slide.name} className="mb-4" />
+              <p className="text-lg">{slide.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Scroll arrows */}
-      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-4 z-50">
-        {showUpArrow && (
-          <button onClick={scrollToTop} className="animate-bounce bg-blue-500 text-white p-2 rounded-full">
-            ▲
-          </button>
-        )}
-        {showDownArrow && (
-          <button onClick={scrollToBottom} className="animate-bounce bg-blue-500 text-white p-2 rounded-full">
-            ▼
-          </button>
-        )}
+      <div className="absolute bottom-4 right-4 flex space-x-2">
+        <button onClick={handlePrev} className="bg-blue-500 text-white p-2 rounded-full">
+          &#9664;
+        </button>
+        <button onClick={handleNext} className="bg-blue-500 text-white p-2 rounded-full">
+          &#9654;
+        </button>
+      </div>
+      <div className="absolute bottom-4 transform p-2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleIndicatorClick(index)}
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+            }`}
+          ></button>
+        ))}
       </div>
     </div>
   );
 };
 
-export default ScrollArrows;
+export default Slider;

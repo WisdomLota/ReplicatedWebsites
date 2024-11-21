@@ -12,8 +12,8 @@ const Home = () => {
         </header>
 
         <main className="flex space-x-4">
-            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold hover:bg-blue-700" onClick={()=> navigate('/FBA_Finance')}>FBA Finance</p>
-            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold hover:bg-blue-700" onClick={()=> navigate('/hondaCyprus')}>Honda Cyprus</p>
+            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold hover:bg-blue-700 transform transition hover:scale-110 duration-300" onClick={()=> navigate('/FBA_Finance')}>FBA Finance</p>
+            <p className="bg-blue-400 border-blue-700 rounded-lg cursor-pointer text-center w-32 p-2 text-white font-semibold hover:bg-blue-700 transform transition hover:scale-110 duration-300" onClick={()=> navigate('/hondaCyprus')}>Honda Cyprus</p>
         </main>
     </body>
     
